@@ -1,5 +1,6 @@
 import "./App.css";
 import axios from "axios";
+import Card from "./Card.js";
 import { useState, useEffect } from "react";
 
 function App() {
@@ -27,20 +28,11 @@ function App() {
       <label>Days since you ate it:</label>
       <input type="number" onChange={(e) => setDays(e.target.value)} />
       <button onClick={addToList}>Add to List</button>
-
-      <h1>
+      <>
         {foodList.map((value, key) => {
-          return (
-            <div key={key}>
-              <p>
-                {value.foodName}
-                {` `}
-                {value.daysSinceIAte}
-              </p>
-            </div>
-          );
+          return <Card value={value} key={key} />;
         })}
-      </h1>
+      </>
     </div>
   );
 }
